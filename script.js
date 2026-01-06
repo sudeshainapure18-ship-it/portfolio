@@ -192,7 +192,7 @@ contactForm.addEventListener('submit', async (e) => {
     
     try {
         // Your Google Sheets Web App URL
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxrEDmBqfQJApJ-pcdM5UJDEm7qfbPVhQY5rlB11x8DaicT4ROrVzKNxnWpCBIFWXE/exec';
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxJ3kimdn_iuLs6mcvk_M8l47E__yv6Ieu2s_97CXYk_VFwU70rMA4GsVi2O1QIwB1-/exec';
         
         // Send data using GET method with URL parameters (more reliable for Google Sheets)
         await fetch(GOOGLE_SHEET_URL + '?' + params.toString(), {
