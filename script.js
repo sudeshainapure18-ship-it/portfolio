@@ -191,7 +191,7 @@ contactForm.addEventListener('submit', async (e) => {
     
     try {
         // Replace this URL with your Google Sheets Web App URL
-        const GOOGLE_SHEET_URL = 'YOUR_GOOGLE_SHEETS_WEB_APP_URL_HERE';
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxrEDmBqfQJApJ-pcdM5UJDEm7qfbPVhQY5rlB11x8DaicT4ROrVzKNxnWpCBIFWXE/exec';
         
         const response = await fetch(GOOGLE_SHEET_URL, {
             method: 'POST',
