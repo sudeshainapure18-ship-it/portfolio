@@ -181,30 +181,29 @@ contactForm.addEventListener('submit', async (e) => {
     
     // Get form data
     const formData = new FormData(contactForm);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        subject: formData.get('subject'),
-        message: formData.get('message'),
-        timestamp: new Date().toISOString()
-    };
+    
+    // Create URL encoded data for Google Sheets
+    const params = new URLSearchParams();
+    params.append('name', formData.get('name'));
+    params.append('email', formData.get('email'));
+    params.append('subject', formData.get('subject'));
+    params.append('message', formData.get('message'));
+    params.append('timestamp', new Date().toLocaleString());
     
     try {
-        // Replace this URL with your Google Sheets Web App URL
+        // Your Google Sheets Web App URL
         const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxrEDmBqfQJApJ-pcdM5UJDEm7qfbPVhQY5rlB11x8DaicT4ROrVzKNxnWpCBIFWXE/exec';
         
-        const response = await fetch(GOOGLE_SHEET_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
+        // Send data using GET method with URL parameters (more reliable for Google Sheets)
+        await fetch(GOOGLE_SHEET_URL + '?' + params.toString(), {
+            method: 'GET',
+            mode: 'no-cors'
         });
         
         // Show success message
-        formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+        formMessage.textContent = '✅ Thank you! Your message has been sent successfully.';
         formMessage.className = 'form-message success';
+        formMessage.style.display = 'block';
         contactForm.reset();
         
         // Hide message after 5 seconds
@@ -213,9 +212,11 @@ contactForm.addEventListener('submit', async (e) => {
         }, 5000);
         
     } catch (error) {
+        console.error('Form submission error:', error);
         // Show error message
-        formMessage.textContent = 'Oops! Something went wrong. Please try again or email me directly.';
+        formMessage.textContent = '❌ Oops! Something went wrong. Please try again or email me directly at sudeshainapure18@gmail.com';
         formMessage.className = 'form-message error';
+        formMessage.style.display = 'block';
     } finally {
         // Hide loader
         btnText.style.display = 'inline';
