@@ -1,0 +1,66 @@
+<!-- 
+INSTRUCTIONS TO ADD RESUME DOWNLOAD BUTTON
+==========================================
+
+STEP 1: Open index.html in GitHub
+STEP 2: Find line 49-56 (the hero-buttons section)
+STEP 3: Replace the entire <div class="hero-buttons"> section with the code below:
+-->
+
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </a>
+                        <a href="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/b79dae1a-add2-44de-ad75-f27605c6350c/2026-01-06T14-57-40-838Z-14559e63-sudesh_resume.pdf" 
+                           class="btn btn-secondary" 
+                           download="Sudesh_Ainapure_Resume.pdf"
+                           target="_blank">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                        <a href="#projects" class="btn btn-outline">
+                            <i class="fas fa-code"></i> View Projects
+                        </a>
+                    </div>
+
+<!-- 
+STEP 4: Add this CSS to style.css (at the end of the file):
+-->
+
+/* Resume Download Button - Outline Style */
+.btn-outline {
+    background: transparent;
+    color: #FF6B35;
+    border: 2px solid #FF6B35;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: #FF6B35;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+}
+
+.btn-outline i {
+    font-size: 1.1em;
+}
+
+/* Make buttons responsive on mobile */
+@media (max-width: 768px) {
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
